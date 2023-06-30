@@ -1,0 +1,34 @@
+class Waypoint:
+    def __init__(self, latitude, longitude):
+        self.latitude = latitude
+        self.longitude = longitude
+
+
+class AutoNavigator:
+    def __init__(self):
+        self.waypoints = []
+        self.current_waypoint_index = 0
+
+    def add_waypoint(self, latitude, longitude):
+        waypoint = Waypoint(latitude, longitude)
+        self.waypoints.append(waypoint)
+
+    def navigate(self):
+        if self.current_waypoint_index < len(self.waypoints):
+            current_waypoint = self.waypoints[self.current_waypoint_index]
+            print(f"Driving to waypoint: ({current_waypoint.latitude}, {current_waypoint.longitude})")
+            self.current_waypoint_index += 1
+        else:
+            print("Destination reached.")
+
+# Example usage
+navigator = AutoNavigator()
+
+navigator.add_waypoint(37.7749, -122.4194)  # San Francisco
+navigator.add_waypoint(34.0522, -118.2437)  # Los Angeles
+navigator.add_waypoint(47.6062, -122.3321)  # Seattle
+
+navigator.navigate()
+navigator.navigate()
+navigator.navigate()
+navigator.navigate()
